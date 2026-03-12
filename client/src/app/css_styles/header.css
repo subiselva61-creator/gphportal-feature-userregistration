@@ -1,0 +1,55 @@
+/* Navbar Styling */
+.navbar {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.03) 100%) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 999px;
+    /* Pill shape for floating effect */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    padding: 0.8rem 2rem;
+    margin: 1rem 2rem;
+    /* Floating margin */
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: white !important;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.navbar-brand img {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.nav-link {
+    font-family: var(--font-display);
+    /* Use Orbitron for links too for consistency */
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9) !important;
+    /* Increased opacity */
+    margin: 0 0.5rem;
+    padding: 0.5rem 1.2rem !important;
+    border-radius: 999px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.05em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    /* Added shadow for readability */
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}

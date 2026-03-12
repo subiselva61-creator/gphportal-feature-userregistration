@@ -1,0 +1,58 @@
+{
+  "name": "redux-toolkit-auth",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@reduxjs/toolkit": "^1.8.6",
+    "@stripe/react-stripe-js": "^3.5.1",
+    "@stripe/stripe-js": "^6.1.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.0.1",
+    "@testing-library/user-event": "^14.1.1",
+    "axios": "^0.27.2",
+    "bootstrap": "4.6.2",
+    "datatables.net-dt": "^2.2.2",
+    "datatables.net-react": "^1.0.0",
+    "flag-icons": "^7.5.0",
+    "formik": "^2.2.9",
+    "global": "^4.4.0",
+    "http-proxy-middleware": "^2.0.6",
+    "leaflet": "^1.9.4",
+    "rc-table": "^7.50.4",
+    "react": "^19.0.0-rc.1",
+    "react-dom": "^19.0.0-rc.1",
+    "react-leaflet": "^5.0.0-rc.2",
+    "react-popper": "^2.3.0",
+    "react-redux": "^8.0.4",
+    "react-router-dom": "^6.4.2",
+    "react-scripts": "5.0.1",
+    "three": "^0.181.2",
+    "web-vitals": "^2.1.0",
+    "yup": "^0.32.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

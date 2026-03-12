@@ -1,0 +1,113 @@
+/* Project Status Indicator Styling */
+
+/* Base status dot */
+.dot {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    box-shadow: 0 0 8px currentColor;
+    transition: all 0.3s ease;
+}
+
+/* Status-specific colors */
+.status-new {
+    color: #10b981;
+    background-color: #10b981;
+}
+
+.status-inprogress {
+    color: #90ee90;
+    background-color: #90ee90;
+}
+
+.status-live {
+    color: #3b82f6;
+    background-color: #3b82f6;
+}
+
+.status-delayed {
+    color: #fbbf24;
+    background-color: #fbbf24;
+}
+
+.status-findifficult {
+    color: #ef4444;
+    background-color: #ef4444;
+}
+
+.status-stopped {
+    color: #6b7280;
+    background-color: #6b7280;
+}
+
+/* Status container */
+.status-indicator-container {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+}
+
+/* Status item (dot + label) */
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: white !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+}
+
+.status-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.status-item:hover .dot {
+    transform: scale(1.2);
+    box-shadow: 0 0 12px currentColor;
+}
+
+/* Status label */
+.status-label {
+    font-family: var(--font-main);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    color: white !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .status-indicator-container {
+        gap: 1rem;
+        padding: 0.75rem;
+    }
+
+    .status-item {
+        font-size: 0.85rem;
+    }
+
+    .dot {
+        height: 10px;
+        width: 10px;
+    }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    .status-indicator-container {
+        background: rgba(0, 0, 0, 0.2);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+}

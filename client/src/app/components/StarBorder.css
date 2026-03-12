@@ -1,0 +1,54 @@
+.star-border-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+    border-radius: inherit;
+    box-sizing: border-box;
+}
+
+.inner-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: inherit;
+    border-radius: inherit;
+    box-sizing: border-box;
+}
+
+.border-gradient-bottom,
+.border-gradient-top {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    width: 100%;
+    opacity: 1;
+    z-index: 2;
+    pointer-events: none;
+    background-size: 200% 100% !important;
+    animation-name: star-border-slide;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.border-gradient-bottom {
+    bottom: 0;
+}
+
+.border-gradient-top {
+    top: 0;
+}
+
+@keyframes star-border-slide {
+    0% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: -100% 0;
+    }
+}

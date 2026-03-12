@@ -1,0 +1,311 @@
+/* ===== INVESTOR MAP SECTION ===== */
+
+/* Main wrapper for map and filters */
+.investor-map-wrapper {
+    width: 100%;
+    height: 70vh;
+    position: relative;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow:
+        0 12px 48px rgba(0, 0, 0, 0.4),
+        0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Map container with dark theme */
+.investor-map {
+    height: 100%;
+    width: 100%;
+    background: #0a0e27;
+}
+
+/* ===== GEOGRAPHY FILTERS AT BOTTOM ===== */
+.geography-filters-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    gap: 16px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg,
+            rgba(26, 26, 26, 0.95) 0%,
+            rgba(45, 45, 45, 0.95) 50%,
+            rgba(26, 26, 26, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 2px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.geography-filters-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            transparent 100%);
+}
+
+/* Individual filter buttons */
+.geography-filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 12px;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(255, 255, 255, 0.04) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.geography-filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.15) 50%,
+            transparent 100%);
+    transition: left 0.5s ease;
+}
+
+.geography-filter-btn:hover::before {
+    left: 100%;
+}
+
+.geography-filter-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 255, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.08) 100%);
+    color: #ffffff;
+}
+
+.geography-filter-btn .geography-flag {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.geography-filter-btn .geography-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ===== LEAFLET MAP STYLES FOR INVESTOR MAP ===== */
+.investor-map-wrapper .leaflet-container {
+    width: 100%;
+    height: 100%;
+    background: #0a0e27;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ===== LEAFLET ZOOM CONTROL - FROSTED GLASS EFFECT ===== */
+.investor-map-wrapper .leaflet-control-zoom {
+    border: none !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.6),
+        0 16px 32px rgba(0, 0, 0, 0.12) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-radius: 50% !important;
+    overflow: visible !important;
+    width: 50px !important;
+    height: 110px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+}
+
+.investor-map-wrapper .leaflet-control-zoom a {
+    width: 50px !important;
+    height: 50px !important;
+    line-height: 50px !important;
+    border: none !important;
+    background: transparent !important;
+    color: #fff !important;
+    font-size: 0 !important;
+    font-weight: 600 !important;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    display: grid !important;
+    place-items: center !important;
+    cursor: pointer !important;
+    outline: 0 !important;
+    border-radius: 50% !important;
+}
+
+.investor-map-wrapper .leaflet-control-zoom a:first-child {
+    border-bottom: none !important;
+    margin-bottom: 10px !important;
+}
+
+/* Plus icon (+) */
+.investor-map-wrapper .leaflet-control-zoom-in::before,
+.investor-map-wrapper .leaflet-control-zoom-in::after {
+    content: "" !important;
+    position: absolute !important;
+    background: #fff !important;
+    border-radius: 10px !important;
+}
+
+.investor-map-wrapper .leaflet-control-zoom-in::before {
+    width: 40% !important;
+    height: 3px !important;
+}
+
+.investor-map-wrapper .leaflet-control-zoom-in::after {
+    width: 3px !important;
+    height: 40% !important;
+}
+
+/* Minus icon (-) */
+.investor-map-wrapper .leaflet-control-zoom-out::before {
+    content: "" !important;
+    position: absolute !important;
+    width: 40% !important;
+    height: 3px !important;
+    background: #fff !important;
+    border-radius: 10px !important;
+}
+
+.investor-map-wrapper .leaflet-control-zoom a:hover {
+    background: transparent !important;
+    color: #fff !important;
+    transform: scale(1.1) !important;
+}
+
+.investor-map-wrapper .leaflet-control-zoom a:active {
+    background: transparent !important;
+    transform: scale(0.95) !important;
+}
+
+/* ===== LEAFLET POPUP STYLES FOR INVESTOR MAP ===== */
+.investor-map-wrapper .leaflet-popup-content-wrapper {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.98) 0%,
+            rgba(250, 250, 250, 0.98) 100%) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px !important;
+    box-shadow:
+        0 12px 48px rgba(0, 0, 0, 0.25),
+        0 4px 16px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.05) !important;
+    padding: 0 !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.investor-map-wrapper .leaflet-popup-tip {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.98) 0%,
+            rgba(250, 250, 250, 0.98) 100%) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ===== CIRCLE MARKERS STYLING ===== */
+.investor-map-wrapper .leaflet-interactive {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.investor-map-wrapper .leaflet-interactive:hover {
+    transform: scale(1.2);
+    filter: brightness(1.2);
+}
+
+/* ===== RESPONSIVE ADJUSTMENTS ===== */
+@media (max-width: 1024px) {
+    .geography-filters-container {
+        gap: 12px;
+        padding: 12px 20px;
+        flex-wrap: wrap;
+        max-width: 90%;
+    }
+
+    .geography-filter-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+    .investor-map-wrapper {
+        height: 50vh;
+    }
+
+    .geography-filters-container {
+        bottom: 10px;
+        gap: 8px;
+        padding: 10px 16px;
+    }
+
+    .geography-filter-btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
+    .geography-filter-btn .geography-flag {
+        font-size: 1rem;
+    }
+
+    .investor-map-wrapper .leaflet-control-zoom {
+        width: 40px !important;
+        height: 90px !important;
+    }
+
+    .investor-map-wrapper .leaflet-control-zoom a {
+        width: 40px !important;
+        height: 40px !important;
+        line-height: 40px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .investor-map-wrapper {
+        height: 40vh;
+    }
+
+    .geography-filters-container {
+        gap: 6px;
+        padding: 8px 12px;
+        font-size: 11px;
+    }
+
+    .geography-filter-btn {
+        padding: 6px 10px;
+    }
+}

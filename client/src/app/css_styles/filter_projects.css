@@ -1,0 +1,177 @@
+/* Filter Projects Section Header */
+.row-header {
+    font-family: var(--font-heading);
+    font-weight: 700 !important;
+    font-size: 1.5rem !important;
+    color: var(--text-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    text-align: center;
+}
+
+.row-header::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Map Filter Overlay */
+.map-filter-overlay {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Filter Buttons & Dropdowns - Liquid Glass Effect */
+.btn-secondary {
+    position: relative;
+    padding: 1rem 1.5rem;
+    border-radius: 100vmax !important;
+    isolation: isolate;
+    background-color: rgb(255 255 255 / 25%) !important;
+    color: rgb(255 255 255 / 90%) !important;
+    text-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    font-size: 0.95rem;
+    font-weight: 600;
+    box-shadow: 0 6px 6px rgb(0 0 0 / 20%), 0 0 20px rgb(0 0 0 / 10%) !important;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    border: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary::before,
+.btn-secondary::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+
+/* Glass distortion effect */
+.btn-secondary::before {
+    backdrop-filter: blur(3px);
+    filter: url(#glass-distortion);
+    z-index: -1;
+}
+
+/* Outline shine */
+.btn-secondary::after {
+    box-shadow: inset 2px 2px 1px 0 rgb(255 255 255 / 50%),
+        inset -1px -1px 1px 1px rgb(255 255 255 / 50%);
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: rgb(255 255 255 / 35%) !important;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 8px rgb(0 0 0 / 25%), 0 0 30px rgb(0 0 0 / 15%) !important;
+}
+
+/* Reduce spacing between button text and dropdown icon */
+.btn-secondary .caret {
+    margin-left: 0.35rem !important;
+}
+
+/* Dropdown Menu - Liquid Glass Effect with Smooth Animation */
+.dropdown-menu {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 16px !important;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1) !important;
+    padding: 0.75rem !important;
+    animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transform-origin: bottom center;
+    overflow: hidden;
+}
+
+/* Force dropup positioning - Position menu ABOVE the button */
+.dropup .dropdown-menu {
+    top: auto !important;
+    bottom: 100% !important;
+    margin-bottom: 0.5rem !important;
+    margin-top: 0 !important;
+}
+
+.dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            transparent 100%);
+}
+
+.dropdown-item {
+    border-radius: 10px;
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.95);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.dropdown-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            transparent 100%);
+    transition: left 0.4s ease;
+}
+
+.dropdown-item:hover::before {
+    left: 100%;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    color: rgba(255, 255, 255, 1);
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateX(2px);
+}
+
+/* Smooth Upward Dropdown Animation */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scaleY(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+    }
+}

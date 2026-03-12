@@ -1,0 +1,395 @@
+/* ===== MAP SECTION ===== */
+.map-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
+    position: relative;
+}
+
+/* ===== MODERN GLOSSY MAP LEGEND ===== */
+.map-legend {
+    background: linear-gradient(135deg,
+            rgba(26, 26, 26, 0.95) 0%,
+            rgba(45, 45, 45, 0.95) 50%,
+            rgba(26, 26, 26, 0.95) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 2px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1000;
+    position: relative;
+}
+
+.map-legend::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            transparent 100%);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.legend-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            transparent 100%);
+    transition: left 0.5s ease;
+}
+
+.legend-item:hover::before {
+    left: 100%;
+}
+
+.legend-item:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.05) 100%);
+}
+
+/* ===== GLOSSY STATUS DOTS WITH 3D EFFECT ===== */
+.legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    position: relative;
+    box-shadow:
+        0 0 12px currentColor,
+        0 0 24px currentColor,
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.5);
+    animation: pulse 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+.legend-dot::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%,
+            rgba(255, 255, 255, 0.8) 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            transparent 100%);
+}
+
+.legend-dot::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center,
+            currentColor 0%,
+            transparent 70%);
+    opacity: 0.3;
+    animation: ripple 2s ease-in-out infinite;
+}
+
+/* Status-specific colors with enhanced gradients */
+.legend-dot.new {
+    background: radial-gradient(circle at 30% 30%,
+            #66ff66 0%,
+            #00ff00 50%,
+            #00cc00 100%);
+    color: #00ff00;
+}
+
+.legend-dot.inprogress {
+    background: radial-gradient(circle at 30% 30%,
+            #ffcc66 0%,
+            #ffa500 50%,
+            #ff8800 100%);
+    color: #ffa500;
+}
+
+.legend-dot.live {
+    background: radial-gradient(circle at 30% 30%,
+            #66ccff 0%,
+            #0099ff 50%,
+            #0077cc 100%);
+    color: #0099ff;
+}
+
+.legend-dot.delayed {
+    background: radial-gradient(circle at 30% 30%,
+            #ffff66 0%,
+            #ffff00 50%,
+            #cccc00 100%);
+    color: #ffff00;
+}
+
+.legend-dot.stopped {
+    background: radial-gradient(circle at 30% 30%,
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 12px currentColor,
+                0 0 24px currentColor,
+                0 4px 8px rgba(0, 0, 0, 0.4),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 2px 4px rgba(255, 255, 255, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 20px currentColor,
+                0 0 40px currentColor,
+                0 6px 12px rgba(0, 0, 0, 0.5),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.3),
+                inset 0 2px 4px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        @keyframes ripple {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.1;
+                transform: scale(1.5);
+            }
+
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .map-legend {
+                padding: 16px 20px;
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .legend-item {
+                font-size: 12px;
+                padding: 8px 14px;
+                gap: 10px;
+            }
+
+            .legend-dot {
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .map-legend {
+                gap: 12px;
+                padding: 12px 16px;
+            }
+
+            .legend-item {
+                font-size: 11px;
+                gap: 8px;
+                padding: 6px 12px;
+            }
+
+            .legend-dot {
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        /* ===== MODERN POPUP STYLING ===== */
+        .leaflet-popup-content-wrapper {
+            border-radius: 20px !important;
+            padding: 0 !important;
+            overflow: hidden;
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.98) 0%,
+                rgba(250, 250, 250, 0.98) 100%) !important;
+            backdrop-filter: blur(20px) !important;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+            0 8px 24px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+            border: 1px solid rgba(255, 255, 255, 0.5) !important;
+        }
+
+        .leaflet-popup-content {
+            margin: 0 !important;
+            width: 320px !important;
+        }
+
+        .leaflet-popup-tip {
+            background: linear-gradient(135deg,
+                rgba(255, 255, 255, 0.98) 0%,
+                rgba(250, 250, 250, 0.98) 100%) !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+        }
+
+        .infobox-wrapper {
+            padding: 28px;
+            background: transparent;
+        }
+
+        .ts-form p {
+            margin-bottom: 14px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color: #2c3e50;
+            line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .ts-form b {
+            color: #7f8c8d;
+            font-weight: 700;
+            margin-right: 10px;
+            min-width: 90px;
+        }
+
+        .ts-form .btn-primary {
+            background: linear-gradient(135deg, #0099ff 0%, #0077cc 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 14px;
+            width: 100%;
+            color: white;
+            font-weight: 600;
+            margin-top: 18px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 4px 12px rgba(0, 153, 255, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ts-form .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.2) 50%,
+                transparent 100%);
+            transition: left 0.5s ease;
+        }
+
+        .ts-form .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .ts-form .btn-primary:hover {
+            background: linear-gradient(135deg, #00aaff 0%, #0088dd 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 153, 255, 0.4),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .ts-form .btn-primary:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(0, 153, 255, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        /* ===== MODERN CLOSE BUTTON ===== */
+        .ts-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: all 0.3s ease;
+            z-index: 10;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ts-close:hover {
+            opacity: 1;
+            background: rgba(255, 0, 0, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .ts-close::before,
+        .ts-close::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 14px;
+            height: 2px;
+            background-color: #e74c3c;
+            border-radius: 2px;
+            transform: translate(-50%, -50%) rotate(45deg);
+            transition: background-color 0.3s ease;
+        }
+
+        .ts-close::after {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .ts-close:hover::before,
+        .ts-close:hover::after {
+            background-color: #c0392b;
+        }

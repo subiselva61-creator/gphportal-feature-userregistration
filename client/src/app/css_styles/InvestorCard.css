@@ -1,0 +1,89 @@
+/* InvestorCard.css - Styling for Investor Cards with Glassmorphism */
+
+/* Card Content */
+.card-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Removed height: 100% to allow content to dictate height */
+    gap: 1rem;
+}
+
+/* Investor Header */
+.investor-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.investor-logo-img {
+    max-height: 50px;
+    max-width: 80px;
+    object-fit: contain;
+}
+
+.investor-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+}
+
+/* Country */
+.investor-country {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Details Grid */
+.investor-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.investor-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.85rem;
+}
+
+.investor-detail-item strong {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+}
+
+.investor-detail-item span {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Override ExactGlowCard styles for Investor Cards */
+.exact-glow-wrapper .investor-card {
+    aspect-ratio: unset !important;
+    height: auto !important;
+    min-height: 550px;
+    display: flex !important;
+    flex-direction: column;
+    padding: 2rem !important;
+    width: 100% !important;
+    white-space: normal !important;
+    /* Reset white-space to allow wrapping */
+}
+
+/* Ensure card content takes full available space */
+.investor-card .card-content {
+    flex: 1;
+    width: 100%;
+}
